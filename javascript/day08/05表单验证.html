@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      #div1 {
+        width: 200px;
+        height: 200px;
+        background-color: lightblue;
+        border: 1px solid black;
+        text-align: center;
+        padding: 50px;
+        margin: 100px auto;
+      }
+
+      #div1 input {
+        width: 200px;
+        height: 30px;
+        font-size: 18px;
+        margin-top: 10px;
+      }
+
+      #div1 span {
+        font-size: 16px;
+        color: red;
+      }
+    </style>
+    <script type="text/javascript">
+      /* 
+        事件驱动函数 onClick
+               onBlur 失去焦点
+      */
+      function btnBlur() {
+        let oUsername = document.getElementById("username");
+        let oUsernameSpan = document.getElementById("username_span");
+
+        // 1.获取输入框的内容
+        let oValue = oUsername.value;
+
+        // 2.判断
+        // (1) 用户名长度是否合法
+        if (!(oValue.length >= 6 && oValue.length <= 18)) {
+          console.log(1);
+          oUsernameSpan.innerHTML = "!长度应为6-18个字符";
+          return false;
+        }
+        let sreg = /^[a-z]/i;
+        let ureg = /\W/;
+        if (!sreg.test(oValue)) {
+          console.log(2);
+          oUsernameSpan.innerHTML = "!邮件地址必须以英文字母开头";
+          return false;
+        }
+        if (ureg.test(oValue)) {
+          console.log(3);
+          oUsernameSpan.innerHTML = "!邮件地址须由字母/数字/下划线组成";
+          return false;
+        }
+        oUsernameSpan.innerHTML = "√恭喜,该邮件地址可注册";
+      }
+    </script>
+  </head>
+  <body>
+    <div id="div1">
+      <input
+        type="text"
+        placeholder="用户名"
+        onblur="btnBlur()"
+        id="username"
+      />
+      <span id="username_span">
+        6-18个字符, 可使用数字 字母 下划线, 需以字母开头
+      </span>
+      <input type="password" placeholder="密码" />
+    </div>
+  </body>
+</html>
