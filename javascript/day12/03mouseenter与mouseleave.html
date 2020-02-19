@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: #bfa;
+        line-height: 100px;
+        text-align: center;
+        margin: 20px;
+        padding: 50px;
+      }
+
+      div span {
+        width: 100px;
+        height: 100px;
+        background-color: #fff;
+        display: inline-block;
+      }
+    </style>
+    <script type="text/javascript">
+      /* 
+        [注] 经过子节点会重复触发
+        mouseover
+        mouseout
+
+        [注] 经过子节点不会重复触发 IE8以后才有
+        mouseenter
+        mouseleave
+      */
+      onload = () => {
+        let divs = document.getElementsByName("div");
+
+        let i = 0;
+        divs[0].onclick = function() {
+          let oSpan = this.getElementsByName("span")[0];
+          oSpan.innerHTML = i++;
+        };
+
+        let j = 0;
+        divs[1].onclick = function() {
+          let oSpan = this.getElementsByName("span")[1];
+          oSpan.innerHTML = j++;
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <div>
+      <span>mouseenter</span>
+    </div>
+    <div>
+      <span>mouseleave</span>
+    </div>
+  </body>
+</html>

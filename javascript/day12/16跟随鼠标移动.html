@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #000;
+      }
+      #div1 {
+        width: 208px;
+        height: 208px;
+        background: url(girl.gif) no-repeat;
+        position: absolute;
+      }
+    </style>
+    <script type="text/javascript">
+      onload = () => {
+        let div = document.getElementById("div1");
+        document.onmousemove = ev => {
+          let e = ev || window.event;
+          div.style.left = e.clientX - 75 + "px";
+          div.style.top = e.clientY - 75 + "px";
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <div id="div1"></div>
+  </body>
+</html>

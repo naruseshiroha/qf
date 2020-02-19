@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      div {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #bfa;
+        border-radius: 50%;
+      }
+    </style>
+    <script type="text/javascript">
+      onload = () => {
+        let divs = document.getElementsByTagName("div");
+        document.onmousemove = ev => {
+          let e = ev || window.event;
+          for (let i = divs.length - 1; i > 0; i--) {
+            divs[i].style.left = divs[i - 1].offsetLeft + "px";
+            divs[i].style.top = divs[i - 1].offsetTop + "px";
+          }
+
+          // 让下标0的div跟随鼠标移动
+          divs[0].style.left = e.clientX + "px";
+          divs[0].style.top = e.clientY + "px";
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script>
+      /* for (let i = 0; i < 5; i++) {
+        setTimeout(function() {
+          console.log(i);
+        }, 4000);
+      }
+      alert("循环结束了" + i); */
+
+      /* window.onload = function() {};
+      let person = {};
+      person.showName = function() {
+        alert(1);
+      };
+      person.showName = function() {
+        alert(2);
+      }; */
+
+      let d = new Date();
+      alert(d.getFullYear());
+      d.setFullYear(2000);
+      alert(d);
+
+      onload = () => {
+        let oPhone = document.getElementById("phone");
+        oPhone.onblur = () => {
+          let oValue = this.value;
+          if (oValue[0] != "1") {
+            alert("手机号码是以1开头");
+          } else if (oValue.length != 11) {
+            alert("请输入11位的手机号码");
+          } else {
+            let isYes = true; //假设都是数字
+            for (let i = 0; i < oValue.length; i++) {
+              if (!isNum(oValue[i])) {
+                isYes = false;
+                break;
+              }
+            }
+
+            if (isYes) {
+              alert("正确的手机");
+            } else {
+              alert("手机格式不对");
+            }
+          }
+        };
+
+        let oRepassword = document.getElementById("repassword");
+        let oPassword = document.getElementById("password");
+        oRepassword.onblur = () => {
+          if (oPassword.value != oRepassword.value) {
+            alert("两次密码输入不一致");
+          }
+        };
+      };
+      function isNum(num) {
+        if (num >= "0" && num <= "9") {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <input type="text" id="phone" />
+    <input type="text"placeholder="密码" id = 'password' / >
+    <input type="text" placeholder="确认密码" id="repassword" />
+  </body>
+</html>

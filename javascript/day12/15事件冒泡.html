@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        padding: 50px;
+      }
+      #div1 {
+        background-color: red;
+      }
+      #div2 {
+        background-color: green;
+      }
+      #div3 {
+        background-color: blue;
+      }
+    </style>
+    <script type="text/javascript">
+      /* 
+      浏览器上事件天生的一个特点: 事件流
+        事件冒泡: 由里向外逐级触发
+        事件捕获: 由外向里逐级触发
+
+        阻止事件冒泡: 浏览器兼容问题
+        事件对象的属性和方法
+        cancelBubble=true   stopPropagation()
+       */
+      onload = () => {
+        let divs = document.getElementsByTagName("div");
+        for (let i = 0; i < divs.length; i++) {
+          divs[i].onclick = ev => {
+            let e = ev || window.event;
+            alert(divs[i].id);
+
+            stopBubble(e);
+          };
+        }
+      };
+
+      // 封装跨浏览器兼容的阻止事件冒泡
+      function stopBubble(e) {
+        if (e.stopPropagation) {
+          e.stopPropagation();
+        } else {
+          e.cancelBubble = true;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="div1">
+      <div id="div2">
+        <div id="div3"></div>
+      </div>
+    </div>
+  </body>
+</html>

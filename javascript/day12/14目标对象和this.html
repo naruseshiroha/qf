@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script tyep="text/javascript" src="../tool.js"></script>
+    <script type="text/javascript">
+      /* 
+        target  目标对象/触发对象  事件对象的属性
+        [注] 这个事件是由谁而起的
+        IE8 以下不兼容 window.event.srcElement
+
+        this 永远指向当前函数的主人
+      */
+
+      onload = () => {
+        let oLi = $("li1");
+        /* oLi.onclick = ev => {
+        // oLi.onclick = function(ev) {
+          let e = ev || window.event;
+          let target = e.target || window.event.srcElement;
+          // alert(oLi.innerHTML);
+          console.log(e);
+          console.log(target);
+          console.log(target.innerHTML);
+        }; */
+        let oUl = $("ul1");
+        oUl.onclick = ev => {
+          let e = ev || window.event;
+          let target = e.target || window.event.srcElement;
+          console.log(this.tagName);
+          console.log(target.innerHTML);
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <ul id="ul1">
+      <li id="li1">111</li>
+      <li>222</li>
+      <li>333</li>
+    </ul>
+  </body>
+</html>

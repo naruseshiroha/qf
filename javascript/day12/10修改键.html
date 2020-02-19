@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript">
+      /* 
+      事件对象的属性:
+        shiftKey  按下shift键, 为true, 默认为false
+        altKey
+        ctrlKey
+        metaKey   Windows系统  按下windows键, 为true
+               MacOS     按下command键, 为true 
+
+        [注] 和别的操作进行组合, 形成一些快捷键操作
+       */
+      onload = () => {
+        document.onmousedown = ev => {
+          let e = ev || window.event;
+          let arr = [];
+          if (e.shiftKey) {
+            arr.push("shift");
+          }
+          if (e.altKey) {
+            arr.push("alt");
+          }
+          if (e.ctrlKey) {
+            arr.push("ctrl");
+          }
+          if (e.metaKey) {
+            arr.push("windows");
+          }
+          console.log(arr);
+        };
+      };
+    </script>
+  </head>
+  <body></body>
+</html>

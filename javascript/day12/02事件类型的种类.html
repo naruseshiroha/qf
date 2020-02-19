@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #div1 {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+    </style>
+    <script type="text/javascript">
+      /* 
+        事件类型的种类:
+          一 鼠标事件
+            click    单击
+            dbclick   双击
+            mouseover  鼠标移入
+            mouseout   鼠标移出
+            mousemove  鼠标移动(会不停的触发) 
+            mouseenter  鼠标移入
+            mouseleave  鼠标移出
+
+          二 键盘事件
+
+          三 HTML事件
+            1.window事件
+            2.表单事件
+       */
+
+      onload = () => {
+        let btn = document.getElementById("btn1");
+        /* btn.ondblclick = () => {
+          alert("双击");
+        }; */
+
+        /* btn.onmousemove = () => {
+          btn.style.backgroundColor = "#bfa";
+        };
+
+        btn.onmouseout = () => {
+          btn.style.backgroundColor = "#fff";
+        }; */
+
+        btn.onmousedown = () => {
+          btn.innerHTML = "按下";
+        };
+
+        btn.onmouseup = () => {
+          btn.innerHTML = "抬起";
+        };
+
+        let div = document.getElementById("div1");
+        let i = 0;
+        div.onmousemove = () => {
+          div.innerHTML = i++;
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <button id="btn1">按钮</button>
+    <div id="div1"></div>
+  </body>
+</html>
