@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script type="text/javascript">
+      /*
+        DOM: document object model
+          节点类型:
+            元素节点 <div></div>
+            属性节点 id = 'div1'
+            文本节点 div文本
+
+        元素节点的获取
+          document.getElementById(di)
+          功能: 通过id获取符合条件的元素. (id唯一)
+          返回值: 就是符合条件的一个节点
+      */
+      onload = () => {
+        let node1 = document.getElementById("div1");
+        console.log(node1);
+
+        /* 
+          获取行间属性的值
+          [注] 只能访问内联样式
+        */
+        console.log(node1.id);
+        console.log(node1.title);
+        console.log(node1.className); // class为关键字, className
+        console.log(node1.style.backgroundColor); // css样式带-,将-去掉,下一个单词首字母大写
+
+        node1.id = "div2";
+        node1.style = {
+          width: "100px",
+          height: "100px",
+          backgroundColor: "#bbffaa"
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <div
+      id="div1"
+      title="hello"
+      class="box"
+      style="width: 300px;height: 200px;background-color: red; text-align: center; margin: 0 auto;"
+    >
+      div文本
+    </div>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script type="text/javascript">
+      /* 
+        BOM: browser object model
+      */
+
+      /* 
+        系统对话框
+          window 方法(一般情况下window可以省略)
+
+          alert() 弹出警告框
+          confirm() 弹出一个带确定和取消的提示框
+            返回值: 如果点击确定,返回true
+                 如果点击取消,返回false
+          prompt() 弹出一个带输入框的提示框
+            参数:
+              第一个参数: 面板上显示的内容
+              第二个参数: 输入框里的默认值
+      */
+      // alert("hello");
+
+      let res = prompt("请输入成绩", "0");
+      console.log(res);
+
+      confirm(`确认关闭?`);
+
+      function show() {
+        console.log("hello world");
+      }
+
+      var num = 10; //
+      // let num = 10 // 不会绑定到window
+
+      console.log(window.num);
+      window.show();
+    </script>
+  </head>
+  <body></body>
+</html>

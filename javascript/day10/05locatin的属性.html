@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script type="text/javascript">
+      /* 
+        url 统一资源定位符
+
+        完整的URL 
+          协议://IP(域名):端口号/路径/?查询字符串#锚点
+          protocol://hostname:port/pathname?search#hash
+
+        location.protocol file: 本地磁盘文件访问
+                  http: 
+                  https: (证书认证协议)
+
+        location.hostname 主机名 IP(在全球范围内找到你当前网络的地址)
+                      域名 就是 IP 的别称
+
+        location.port 端口号(默认是隐藏的)
+        [注] 是当前电脑中使用网络的软件, 随机给它分配一个编号 0-65535
+
+        hostname:port 可以直接定位到当前使用网络的程序
+          细节: 浏览器  8080
+              http  80
+              https  443
+
+        location.pathname 路径
+
+        location.search 查询字符串
+          ?key=value&...
+
+        location.hash 锚点
+      */
+
+      console.log(location.protocol);
+      console.log(location.hostname);
+      console.log(location.pathname);
+      console.log(location.search);
+      console.log(location.hash);
+
+      console.log(location);
+      console.log(location.href);
+      
+      
+    </script>
+  </head>
+  <body></body>
+</html>

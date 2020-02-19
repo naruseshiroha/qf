@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script type="text/javascript">
+      /* 
+        document.getElementById(id);
+
+        node.getElementsByTagName("tagName");
+        功能: 通过tagName获取符合条件的元素节点
+        返回值: 伪数组
+
+        node.getElementsByClassName("className");
+        功能: 通过className获取符合条件的元素节点
+
+        document.getElementsByName("nameValue");
+        功能: 通过nameVaule获取符合条件的元素节点
+        [注] 一般使用在表单元素上
+      */
+      onload = () => {
+        // 使用起来和数组类似, 一般情况, 把这种叫做伪数组/类数组(人为命名)
+        let aLis = document.getElementsByTagName("li"); //
+        console.log(aLis);
+
+        let oNode = document.getElementById("ol1");
+        let oLis = oNode.getElementsByTagName("li");
+        console.log(oLis);
+
+        /* for (let i = 0; i < oLis.length; i++) {
+          oLis[i].style.backgroundColor = '#bfa'
+        } */
+
+        let uNode = document.getElementById("ul1");
+        let cNodes = uNode.getElementsByClassName("box");
+        console.log(cNodes);
+
+        /* for (let i = 0; i < cNodes.length; i++) {
+          cNodes[i].style.backgroundColor = '#bfa'
+        } */
+
+        let hNodes = document.getElementsByName("hello");
+        console.log(hNodes);
+        for (let i = 0; i < hNodes.length; i++) {
+          hNodes[i].style.backgroundColor = "#bfa";
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <ul id="ul1">
+      <li>111</li>
+      <li class="box">111</li>
+      <li>111</li>
+      <li>111</li>
+      <li class="box">111</li>
+      <li name="hello">111</li>
+      <div class="box" name="hello">div</div>
+    </ul>
+    <input type="text" name="hello" />
+    <span name="hello">span</span>
+    <ol id="ol1">
+      <li>222</li>
+      <li class="box">222</li>
+      <li class="box">222</li>
+      <li>222</li>
+    </ol>
+  </body>
+</html>
