@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      #div1 {
+        width: 120px;
+        height: 200px;
+        padding: 50px;
+        background-color: orange;
+        border: 1px solid black;
+        margin: 100px auto;
+        text-align: center;
+      }
+      #div1 span {
+        font-size: 22px;
+      }
+      #div1 button {
+        width: 100px;
+        height: 30px;
+        font-size: 16px;
+        margin-top: 20px;
+        background-color: black;
+        color: white;
+      }
+    </style>
+    <script type="text/javascript">
+      /* 
+        window.onload = function() {
+          // ... 写在这的代码, 是整个页面加载完成以后运行的(固定格式)
+        }
+      */
+      function doubleNum(n) {
+        if (n < 10) {
+          return "0" + n;
+        }
+        return n;
+      }
+      function $(id) {
+        return document.getElementById(id);
+      }
+      let allSecs = 0; // 总秒数
+      let isRunning = false; // 代表当前定时器是否运行
+      let timer = null;
+      window.onload = () => {
+        function start() {
+          timer = setInterval(() => {
+            allSecs++;
+            $("sec").innerHTML = doubleNum(allSecs % 60);
+            $("min").innerHTML = doubleNum(parseInt(allSecs / 60) % 60);
+            $("hour").innerHTML = doubleNum(parseInt(allSecs / 3600));
+          }, 1000);
+        }
+        function pause() {
+          clearInterval(timer);
+        }
+
+        $("btn").onclick = () => {
+          if (!isRunning) {
+            start();
+            $("btn").innerHTML = "暂停";
+          } else {
+            pause();
+            $("btn").innerHTML = "开始";
+          }
+          isRunning = !isRunning;
+          console.log(isRunning);
+        };
+
+        $("reset").onclick = () => {
+          clearInterval(timer);
+          allSecs = 0;
+          $("sec").innerHTML = "00";
+          $("min").innerHTML = "00";
+          $("hour").innerHTML = "00";
+          $("btn").innerHTML = "开始";
+          isRunning = false;
+        };
+        // alert(oStart.innerHTML);
+      };
+    </script>
+  </head>
+  <body>
+    <div id="div1">
+      <span id="hour">00</span>
+      <span>:</span>
+      <span id="min">00</span>
+      <span>:</span>
+      <span id="sec">00</span>
+      <button id="btn">开始</button>
+      <button id="reset">复位</button>
+    </div>
+  </body>
+</html>
