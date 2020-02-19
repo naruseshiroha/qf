@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #slide {
+        position: relative;
+        width: 600px;
+        height: 30px;
+        border: 1px solid #000;
+        margin: 100px auto;
+      }
+      #block {
+        width: 30px;
+        height: 30px;
+        background-color: #00f;
+        position: absolute;
+        left: 0;
+      }
+      #full {
+        width: 0;
+        height: 30px;
+        background-color: orange;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+    <script type="text/javascript">
+      onload = () => {
+        let slide = document.getElementById("slide");
+        let full = document.getElementById("full");
+        let block = document.getElementById("block");
+
+        let l = localStorage.slide ? localStorage.slide : 0;
+        block.style.left = l + "px";
+        full.style.width = l + "px";
+
+        block.onmousedown = ev => {
+          let e = ev || window.event;
+          let offsetX = e.clientX - block.offsetLeft;
+
+          document.onmousemove = ev => {
+            let e = ev || window.event;
+            let l = e.clientX - offsetX;
+            if (l <= 0) {
+              l = 0;
+            }
+            if (l >= 570) {
+              l = 570;
+            }
+            block.style.left = l + "px";
+            full.style.width = l + "px";
+            localStorage.setItem("slide", l);
+          };
+        };
+
+        document.onmouseup = () => {
+          document.onmousemove = null;
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <div id="slide">
+      <div id="full"></div>
+      <div id="block"></div>
+    </div>
+  </body>
+</html>
