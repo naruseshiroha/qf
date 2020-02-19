@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #small {
+        width: 512px;
+        height: 341px;
+        position: absolute;
+        left: 100px;
+        top: 100px;
+      }
+      #small img {
+        width: 100%;
+        height: 100%;
+      }
+      #mark {
+        width: 150px;
+        height: 150px;
+        background-color: white;
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      #big {
+        width: 300px;
+        height: 300px;
+        border: 1px solid #000;
+        left: 712px;
+        top: 100px;
+        overflow: hidden;
+        position: absolute;
+      }
+
+      #big img {
+        width: 1024px;
+        height: 682px;
+        left: 0;
+        top: 0;
+        position: absolute;
+      }
+    </style>
+    <script type="text/javascript">
+      onload = () => {
+        let small = document.getElementById("small");
+        let big = document.getElementById("big");
+        let mark = document.getElementById("mark");
+        let bImg = big.getElementsByTagName("img")[0];
+
+        small.onmouseover = () => {
+          mark.style.display = "block";
+          // big.style.display = "block";
+        };
+
+        small.onmouseout = () => {
+          mark.style.display = "none";
+          // big.style.display = "none";
+        };
+        small.onmousemove = ev => {
+          let e = ev || window.event;
+          let l = e.clientX - small.offsetLeft - 75;
+          let t = e.clientY - small.offsetTop - 75;
+
+          if (l <= 0) {
+            l = 0;
+          }
+          if (l >= 362) {
+            l = 362;
+          }
+          if (t <= 0) {
+            t = 0;
+          }
+          if (t >= 191) {
+            t = 191;
+          }
+          mark.style.left = l + "px";
+          mark.style.top = t + "px";
+
+          /* 
+            右边图片的移动方式, 反方向对应倍数移动
+          */
+          bImg.style.left = l * -2 + "px";
+          bImg.style.top = t * -2 + "px";
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <div id="small">
+      <img src="./reol.jpg" alt="reol" />
+      <div id="mark"></div>
+    </div>
+    <div id="big">
+      <img src="./reol.jpg" alt="reol" />
+    </div>
+  </body>
+</html>

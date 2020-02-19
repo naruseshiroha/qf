@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript">
+      onload = () => {
+        let btns = document.getElementsByTagName("button");
+        /* btns[1].onclick = () => {
+          alert("原有的点击函数");
+        };
+
+        btns[0].onclick = () => {
+          btns[1].onclick = show;
+        };
+
+        btns[2].onclick = () => {
+          btns[1].onclick = null;
+        }; */
+
+        btns[1].addEventListener("click", () => {
+          alert("原有的点击函数");
+        });
+        btns[0].addEventListener("click", () => {
+          btns[1].addEventListener("click", show);
+        });
+        btns[2].addEventListener("click", () => {
+          btns[1].removeEventListener("click", show);
+        });
+      };
+      function show() {
+        alert("hello world!");
+      }
+    </script>
+  </head>
+  <body>
+    <button>添加函数</button>
+    <button>按钮</button>
+    <button>删除函数</button>
+  </body>
+</html>

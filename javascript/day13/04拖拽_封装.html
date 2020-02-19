@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #div1 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
+      }
+    </style>
+    <script type="text/javascript">
+      /* 
+        拖拽:
+          mousedown
+            记录鼠标按下位置和被拖拽物体相对距离
+            let offsetX = e.clientX - node.offsetLeft
+            let offsetY = e.clientY - node.offsetTop
+          mousemmove
+            一直保持, 相对距离
+            node.style.left = e.clientX - offsetX + 'px'
+            node.style.top = e.clientY - offsetY + 'px'
+          mouseup
+            取消拖拽
+       */
+      onload = () => {
+        let div = document.getElementById("div1");
+        drag(div);
+      };
+
+      function drag(node) {
+        node.onmousedown = ev => {
+          let e = ev || window.event;
+          let offsetX = e.clientX - node.offsetLeft;
+          let offsetY = e.clientY - node.offsetTop;
+
+          document.onmousemove = ev => {
+            let e = ev || window.event;
+            node.style.left = e.clientX - offsetX + "px";
+            node.style.top = e.clientY - offsetY + "px";
+          };
+        };
+
+        document.onmouseup = () => {
+          document.onmousemove = null;
+        };
+      }
+    </script>
+  </head>
+  <body>
+    <div id="div1"></div>
+  </body>
+</html>

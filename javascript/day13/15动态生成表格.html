@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #t1 tr td {
+        width: 100px;
+        height: 30px;
+      }
+      .box0 {
+        background-color: red;
+      }
+      .box1 {
+        background-color: blue;
+      }
+    </style>
+    <script type="text/javascript">
+      onload = () => {
+        let row = document.getElementById("row");
+        let col = document.getElementById("col");
+        let btn = document.getElementById("btn1");
+        let tb = document.getElementById("t1");
+
+        tb.onclick = ev => {
+          let e = ev || window.event;
+          let target = e.target || window.event.srcElement;
+          if (target.nodeName.toLowerCase() == "button") {
+            tb.removeChild(target.parentNode.parentNode);
+          }
+        };
+
+        btn.onclick = () => {
+          if (!row.value || !col.value) {
+            alert("请输入对应的行列,生成表格");
+          } else {
+            for (let i = 0; i < row.value; i++) {
+              let tr = document.createElement("tr");
+              tr.className = "box" + (i % 2);
+              for (let i = 0; i < col.value; i++) {
+                let td = document.createElement("td");
+                tr.appendChild(td);
+              }
+              let newTd = document.createElement("td");
+              newTd.innerHTML = "<button>删除</button>";
+              tr.appendChild(newTd);
+              tb.appendChild(tr);
+            }
+          }
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <input type="text" placeholder="行" id="row" />
+    <input type="text" placeholder="列" id="col" />
+    <button id="btn1">生成</button>
+    <table id="t1" border="1"></table>
+  </body>
+</html>

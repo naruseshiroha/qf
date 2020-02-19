@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript">
+      /* 
+        委托:
+          A委托B去买饭
+          A发布任务 委托方
+          B执行任务 代理方
+      */
+      /* 
+        事件委托实现步骤:
+          1.找到当前节点的父节点或祖先节点
+          2.将事件添加到你找到的这个父节点或者祖先节点上
+          3.找到触发对象, 判断触发对象是否是想要的触发对象, 进行后续的操作
+      */
+      onload = () => {
+        let btn = document.getElementById("btn1");
+        let i = 6;
+        btn.onclick = () => {
+          let liNode = document.createElement("li");
+          liNode.innerHTML = i++ * 1111;
+          ul.appendChild(liNode);
+        };
+
+        let ul = document.getElementById("ul1");
+        ul.onclick = ev => {
+          let e = ev || window.event;
+          let target = e.target || window.event.srcElement;
+          if (target.nodeName.toLowerCase() == "li") {
+            target.style.backgroundColor = "green";
+          }
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <button id="btn1">新增li节点</button>
+    <ul id="ul1">
+      <li>1111</li>
+      <li>2222</li>
+      <li>3333</li>
+      <li>4444</li>
+      <li>5555</li>
+    </ul>
+  </body>
+</html>
