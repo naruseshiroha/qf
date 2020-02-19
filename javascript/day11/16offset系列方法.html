@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #div1 {
+        width: 100px;
+        height: 100px;
+        background-color: #bfa;
+        border: 1px solid black;
+        padding: 7px;
+        margin: 14px;
+      }
+    </style>
+    <script type="text/javascript">
+      /* 
+        offsetWidth
+        offsetHeight
+
+        offsetLeft
+        offsetTop
+       */
+      onload = () => {
+        let oDiv = document.getElementById("div1");
+        // alert(getStyle(oDiv, "height"));
+
+        alert(oDiv.offsetWidth) // width + border + padding (眼睛能看到的实际宽高)
+      };
+
+      function getStyle(node, cssStyle) {
+        return node.currentStyle
+          ? node.currentStyle[cssStyle]
+          : getComputedStyle(node)[cssStyle];
+      }
+    </script>
+  </head>
+  <body>
+    <div id="div1"></div>
+  </body>
+</html>

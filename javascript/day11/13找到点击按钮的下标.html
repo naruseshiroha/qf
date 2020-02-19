@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript">
+      onload = () => {
+        let butNodes = document.getElementsByTagName("button");
+        /* 
+          刻舟求剑
+
+          点击按钮, 输出当前按钮的下标
+        */
+        for (var i = 0; i < butNodes.length; i++) {
+          butNodes[i].index = i
+          butNodes[i].onclick = function() {
+            alert(this.index)
+          };
+        }
+
+        alert("循环结束了:" + i);
+      };
+    </script>
+  </head>
+  <body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+  </body>
+</html>

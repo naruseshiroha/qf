@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      #div1 {
+        background-color: #bfa;
+      }
+      .box {
+        height: 300px;
+      }
+    </style>
+    <script type="text/javascript">
+      onload = () => {
+        let oDiv = document.getElementById("div1");
+        /* 
+          通过.style.xxx的方式只能访问内联的css样式
+        */
+        console.log(oDiv.style.width);
+        console.log(oDiv.style.backgroundColor);
+
+        // console.log(oDiv.currentStyle["height"]); // IE
+        // console.log(getComputedStyle(oDiv)['height']); // 火狐 谷歌
+
+        /* 
+          获取当前的有效样式
+          系统提供了两个方法(不同的浏览器)
+        */
+        console.log(getStyle(oDiv, "height"));
+
+        /* 
+          设置样式
+        */
+        let btn = document.getElementById("btn1");
+        btn.onclick = () => {
+          oDiv.style.backgroundColor = "#bfa";
+          oDiv.style.height = "500px";
+        };
+      };
+
+      // 跨浏览器兼容
+      function getStyle(node, cssStyle) {
+        return node.currentStyle
+          ? node.currentStyle[cssStyle]
+          : getComputedStyle(node)[cssStyle];
+      }
+    </script>
+  </head>
+  <body>
+    <div
+      id="div1"
+      class="box"
+      style="width: 200px;background-color: #233333;"
+    ></div>
+
+    <button id="btn1">修改样式</button>
+  </body>
+</html>

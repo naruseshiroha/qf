@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      #div1 {
+        margin: 30px;
+        width: 200px;
+        height: 200px;
+        background-color: #bfa;
+        position: relative;
+      }
+      #div2 {
+        margin: 20px;
+        width: 100px;
+        height: 100px;
+        background-color: #dec;
+      }
+    </style>
+    <script type="text/javascript">
+      /* 
+        offsetLeft
+        offsetTop
+       */
+      onload = () => {
+        let oDiv = document.getElementById("div2");
+        // alert(getStyle(oDiv, "left"));
+
+        alert(oDiv.offsetLeft); // 眼睛能看到实际距离第一个有定位的父节点的距离
+      };
+
+      function getStyle(node, cssStyle) {
+        return node.currentStyle
+          ? node.currentStyle[cssStyle]
+          : getComputedStyle(node)[cssStyle];
+      }
+    </script>
+  </head>
+  <body>
+    <div id="div1">
+      <div id="div2"></div>
+    </div>
+  </body>
+</html>

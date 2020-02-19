@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script type="text/javascript">
+      /* 
+        setAttribute()
+        getAttribute()
+        removeAttribute()
+      */
+      onload = () => {
+        let oDiv = document.getElementById("div1");
+
+        console.log(oDiv.id);
+        console.log(oDiv.title);
+
+        console.log(oDiv.getAttribute("id"));
+        console.log(oDiv.getAttribute("title"));
+
+        /* 
+          1.class的访问
+          2.支持自定义属性
+        */
+        console.log(oDiv.className);
+        console.log(oDiv.getAttribute("class"));
+
+        console.log(oDiv.xxx);
+        console.log(oDiv.getAttribute("xxx"));
+
+        oDiv.className = "box4";
+        oDiv.yyy = "zzz";
+
+        oDiv.setAttribute("class", "box5");
+        oDiv.setAttribute("zzz", "www");
+
+        oDiv.className = "";
+        oDiv.removeAttribute("title");
+      };
+    </script>
+  </head>
+  <body>
+    <div id="div1" class="box" title="hello" name="world" xxx="yyy">div</div>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      #div1 {
+        width: 400px;
+        height: 200px;
+        background-color: white;
+        border: 1px solid black;
+        margin: 100px auto;
+        text-align: center;
+        line-height: 200px;
+        font-size: 18px;
+      }
+    </style>
+    <script type="text/javascript">
+      /*
+         写一个定时器,每个一秒修改一次div内文本颜色和文字大小.
+         最开始这个文字是默认大小,大小开始增大,当增大了6次以后,
+         文字大小开始缩小,缩小6次,文字再开始增大。
+       */
+
+      /*
+         颜色随机
+         rgba(255,255,255,0.5)
+       */
+      onload = () => {
+        let dNode = document.getElementById("div1");
+        let time = 0;
+        let font = parseInt(getComputedStyle(dNode)["fontSize"]);
+        let speed = 6;
+        setInterval(() => {
+          if (++time % 5 === 0) {
+            speed *= -1;
+          }
+          font += speed;
+          dNode.style.backgroundColor = `rgba(
+            ${parseInt(Math.random() * 256)},
+            ${parseInt(Math.random() * 256)},
+            ${parseInt(Math.random() * 256)},
+            ${Math.random().toFixed(2)}
+            )`;
+          dNode.style.fontSize = `${font}px`;
+          console.log("time:", time);
+          console.log("font:", font);
+        }, 1000);
+      };
+    </script>
+  </head>
+  <body>
+    <div id="div1" style="width: 200px;height: 200px;">div</div>
+  </body>
+</html>
